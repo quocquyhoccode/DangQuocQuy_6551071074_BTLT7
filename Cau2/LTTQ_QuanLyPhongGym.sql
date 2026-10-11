@@ -1,0 +1,22 @@
+CREATE DATABASE LTTQ_QuanLyPhongGym;
+GO
+
+USE LTTQ_QuanLyPhongGym;
+GO
+
+CREATE TABLE HoiVien
+(
+    MaHV INT IDENTITY(1,1) PRIMARY KEY,
+    HoTen NVARCHAR(100) NOT NULL,
+    GioiTinh BIT NOT NULL,
+    NgaySinh DATE NOT NULL,
+    SDT VARCHAR(15) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    HangThanhVien NVARCHAR(20) NOT NULL,
+    NgayDangKy DATETIME NOT NULL DEFAULT GETDATE(),
+    TrangThai BIT NOT NULL DEFAULT 1,
+
+    CONSTRAINT CK_HoiVien_HangThanhVien
+        CHECK (HangThanhVien IN ('Basic', 'VIP', 'Premium'))
+);
+GO
